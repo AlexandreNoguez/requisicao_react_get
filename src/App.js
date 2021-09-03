@@ -27,35 +27,22 @@ function App() {
     requisicao();
   }, []);
 
-  // Método para filtrar quando o usuário digita algo no campo de texto
-  const filtrar = (event) => {
+  // Método para alterar o valor do campo
+  const alterarValorCampo = (event) => {
     // Obtêm o termo digitado
     setCampo(event.target.value)
-
-    // Aqui você faz um fetch para sua API e altera o seu vetor. Irei fazer a alteração de maneira local para exemplificar uma filtragem.
-    let vetorTemporario = [];
-    
-    // Laço de repetição para verificar se possui determinado termo
-    for(let i=0; i<vetor.length; i++){
-      if(vetor[i].title.indexOf(campo) !== -1){
-        vetorTemporario.push(vetor[i])
-      }
-    }
-
-    // Adiciona no vetor a filtragem realizada
-    setVetor([...vetorTemporario]);
   }
 
   // Retorno do componente
   return (
     <div>
-      <input type='text' placeholder='Filtrar pelo título' name='campo' onChange={filtrar} />
+      <input type='text' placeholder='Filtrar pelo título' name='campo' onChange={alterarValorCampo} />
       
       <hr />
 
       <table border='1'>
         <tbody>
-          {vetor.map((dados)=>(
+          {vetor.filter(obj => obj.title.includes(campo)).map(dados=>(
             <tr key={dados.title}>
               <td>{dados.id}</td>
               <td>{dados.title}</td>
