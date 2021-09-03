@@ -12,7 +12,7 @@ function App() {
     // URL da API
     const url = "https://jsonplaceholder.typicode.com/posts";
 
-    // Realizar a requicição assíncrona
+    // Realizar a requisição assíncrona
     const requisicao = async () => {
       try {
         const response = await fetch(url);
